@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mood Pebble</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <div>
+          <h1 id="title">Mood Pebble</h1>
+          <p>Drop quick notes into a gentle grid, then filter the texture of the day.</p>
+        </div>
+        <div class="chips" aria-label="Mood filters">
+          <button class="chip" type="button" data-filter="all">All</button>
+          <button class="chip" type="button" data-filter="steady">Steady</button>
+          <button class="chip" type="button" data-filter="bright">Bright</button>
+          <button class="chip" type="button" data-filter="low">Low</button>
+        </div>
+      </section>
+      <section class="board">
+        <form class="composer">
+          <input id="note" maxlength="56" placeholder="Name the mood" aria-label="Mood note">
+          <button type="submit">Drop</button>
+        </form>
+        <div class="pebbles" id="pebbles" aria-live="polite"></div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
