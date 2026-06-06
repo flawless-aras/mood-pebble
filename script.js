@@ -5,11 +5,16 @@ const filters = document.querySelectorAll("[data-filter]");
 
 const moods = ["steady", "bright", "low"];
 let activeFilter = "all";
-let items = [
+const savedItems = JSON.parse(localStorage.getItem("mood-pebble-items") || "null");
+let items = savedItems || [
   { text: "Coffee before inbox", mood: "steady" },
   { text: "Clear desk, clear head", mood: "bright" },
   { text: "Needs quieter edges", mood: "low" }
 ];
+
+function persist() {
+  localStorage.setItem("mood-pebble-items", JSON.stringify(items));
+}
 
 function render() {
   pebbles.innerHTML = "";
@@ -32,6 +37,7 @@ form.addEventListener("submit", (event) => {
   const text = note.value.trim();
   if (!text) return;
   items = [{ text, mood: moods[items.length % moods.length] }, ...items].slice(0, 12);
+  persist();
   note.value = "";
   render();
 });
